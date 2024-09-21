@@ -1,0 +1,42 @@
+.hero {
+  z-index: 0;
+  background-image: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  top: 300px;
+  left: 300px;
+  height: 300px;
+  color: whitesmoke;
+  /* height: 50vh; */
+  /* padding: 40px; */
+}
+
+.font-xlarge {
+  font-size: 5rem;
+}
+
+.discover-btn {
+  padding: 1.25rem 2rem;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  border: 2px solid white;
+  border-radius: 30px;
+}
+
+.ml-20 {
+  margin-left: 20%;
+}
+
+.ml-34 {
+  margin-left: 34%;
+}
+
+.hero-para {
+  font-size: 1.3rem;
+  margin-left: 150px;
+}
