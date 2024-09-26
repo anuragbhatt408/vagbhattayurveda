@@ -41,8 +41,11 @@ const Navbar = () => {
             </li>
           </ul>
           <div>
-            <a href="/" className="btn roboto-black">
-              Explore
+            <a href="/signin" className="btn roboto-black">
+              Signin
+            </a>
+            <a href="/signup" className="btn roboto-black">
+              Signup
             </a>
           </div>
         </div>
