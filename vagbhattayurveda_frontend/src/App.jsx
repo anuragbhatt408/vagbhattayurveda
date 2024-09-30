@@ -6,6 +6,7 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Signin from "./components/Signin/Signin";
 import Layout from "./components/Layout/Layout";
 import Signup from "./components/Signup/Signup";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route exact element={<Hero />} path="/" />
+          <Route exact element={<About />} path="/about" />
           <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route path="/signin" element={<Signin />} />

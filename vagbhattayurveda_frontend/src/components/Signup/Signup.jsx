@@ -1,11 +1,10 @@
 import { useState } from "react";
 
 const Signup = () => {
-  // eslint-disable-next-line no-unused-vars
   const [form, setForm] = useState();
   const handleChange = (e) => {
     console.log([e.target.name], "-", e.target.value);
-    // eslint-disable-next-line no-undef
+
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
