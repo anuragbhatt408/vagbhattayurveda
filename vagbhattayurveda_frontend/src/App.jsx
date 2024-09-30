@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Signin from "./components/Signin/Signin";
 import Layout from "./components/Layout/Layout";
+import Signup from "./components/Signup/Signup";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
