@@ -14,12 +14,12 @@ function App() {
     <>
       {/* <Navbar /> */}
       <Routes>
-        <Route element={<Protected />}>
-          <Route element={<Layout />}>
-            <Route exact element={<Hero />} path="/" />
+        <Route element={<Layout />}>
+          <Route exact element={<Hero />} path="/" />
+          <Route element={<Protected />}>
             <Route exact element={<About />} path="/about" />
-            <Route path="*" element={<PageNotFound />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

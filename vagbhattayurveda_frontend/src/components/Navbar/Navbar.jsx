@@ -58,7 +58,7 @@ const Navbar = () => {
           {token ? (
             <div>
               <a
-                href="/signin"
+                href="/"
                 className="btn roboto-black mr-2"
                 onClick={() => cookies.remove("token")}
               >
