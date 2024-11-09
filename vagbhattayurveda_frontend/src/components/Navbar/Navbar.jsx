@@ -2,8 +2,14 @@ import "../../index.css";
 import logo from "../../assets/images/photo-1512867957657-38dbae50a35b.jpeg";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import cookies from "js-cookie";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [token, setToken] = useState();
+  useEffect(() => {
+    setToken(cookies.get("token"));
+  }, []);
   return (
     <nav className="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
       <div className="nav-container">
@@ -49,14 +55,26 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <div>
-            <a href="/signin" className="btn roboto-black mr-2">
-              Signin
-            </a>
-            <a href="/signup" className="btn roboto-black">
-              Signup
-            </a>
-          </div>
+          {token ? (
+            <div>
+              <a
+                href="/signin"
+                className="btn roboto-black mr-2"
+                onClick={() => cookies.remove("token")}
+              >
+                Logout
+              </a>
+            </div>
+          ) : (
+            <div>
+              <a href="/signin" className="btn roboto-black mr-2">
+                Signin
+              </a>
+              <a href="/signup" className="btn roboto-black">
+                Signup
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </nav>

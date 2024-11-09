@@ -1,16 +1,39 @@
+import axios from "axios";
 import { useState } from "react";
+import logo from "../../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [form, setForm] = useState();
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const handleChange = (e) => {
-    console.log([e.target.name], "-", e.target.value);
-
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("form", JSON.parse(form));
+    const payload = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/users",
+        payload,
+        {
+          withCredentials: true,
+        }
+      );
+      navigate("/signin");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -19,7 +42,7 @@ const Signup = () => {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="vagbhatt-ayurveda-icon"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src={logo}
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -28,45 +51,23 @@ const Signup = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {/* First Name */}
             <div>
               <label
-                htmlFor="first_name"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                First Name
+                Name
               </label>
               <div className="mt-2">
                 <input
-                  id="first_name"
-                  name="fname"
+                  id="name"
+                  name="name"
                   type="text"
                   required
                   onChange={handleChange}
                   placeholder="Enter Your First Name"
-                  //   autoComplete=""
-                  className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <label
-                htmlFor="last_name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Last Name
-              </label>
-              <div className="mt-2">
-                <input
-                  id="last_name"
-                  name="lname"
-                  type="text"
-                  required
-                  onChange={handleChange}
-                  placeholder="Enter Your Last Name"
                   //   autoComplete=""
                   className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -145,7 +146,7 @@ const Signup = () => {
             <div>
               <button
                 type="submit"
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign up

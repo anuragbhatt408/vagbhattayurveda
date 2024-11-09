@@ -7,16 +7,19 @@ import Signin from "./components/Signin/Signin";
 import Layout from "./components/Layout/Layout";
 import Signup from "./components/Signup/Signup";
 import About from "./components/About/About";
+import Protected from "./components/Protected";
 
 function App() {
   return (
     <>
       {/* <Navbar /> */}
       <Routes>
-        <Route element={<Layout />}>
-          <Route exact element={<Hero />} path="/" />
-          <Route exact element={<About />} path="/about" />
-          <Route path="*" element={<PageNotFound />} />
+        <Route element={<Protected />}>
+          <Route element={<Layout />}>
+            <Route exact element={<Hero />} path="/" />
+            <Route exact element={<About />} path="/about" />
+            <Route path="*" element={<PageNotFound />} />
+          </Route>
         </Route>
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
